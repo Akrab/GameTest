@@ -2,19 +2,21 @@ using PG.Game;
 using PG.Game.Player;
 using UnityEngine;
 using Zenject;
-
-public class PlayerInstaller : MonoInstaller
+namespace PG.Game.Player
 {
-    public GameObject playerPrefab;
-    public override void InstallBindings()
+    public class PlayerInstaller : MonoInstaller
     {
-        var newPlayerObj = Container.InstantiatePrefab(playerPrefab, playerPrefab.transform.position, Quaternion.identity, null);
-        var _p = newPlayerObj.GetComponent<Player>();
-        Container.Bind<Player>().FromInstance(_p).AsSingle().NonLazy();
+        public GameObject playerPrefab;
+        public override void InstallBindings()
+        {
+            var newPlayerObj = Container.InstantiatePrefab(playerPrefab, playerPrefab.transform.position, Quaternion.identity, null);
+            var _p = newPlayerObj.GetComponent<Player>();
+            Container.Bind<Player>().FromInstance(_p).AsSingle().NonLazy();
 
-        var c = FindObjectOfType<SmoothCameraFollow>();
-        c.SetTarget(_p.transform);
+            var c = FindObjectOfType<SmoothCameraFollow>();
+            c.SetTarget(_p.transform);
+
+        }
 
     }
-
 }

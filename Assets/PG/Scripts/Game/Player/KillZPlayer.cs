@@ -3,7 +3,7 @@ using PG.ECS.Game;
 using PG.Game.Player;
 using UnityEngine;
 
-namespace Assets.PG.Scripts.Game.Player
+namespace PG.Game.Player
 {
     public class KillZPlayer : MonoBehaviour, IKillZ, IEntity
     {
