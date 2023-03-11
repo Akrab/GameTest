@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PG.UI
 {
-    public class CanvasRoot : MonoBehaviour
+    public class CanvasRoot : CustomBehaviour
     {
         [SerializeField]
-        public RectTransform rect;
+        private RectTransform rect;
+        [SerializeField]
+        private Canvas canvas;
+
+        [SerializeField]
+        private CanvasScaler canvasScaler;
         public List<IForm> SetupUI()
         {
             var forms = GetComponentsInChildren<IForm>();
@@ -18,10 +20,18 @@ namespace PG.UI
             foreach (var form in forms)
             {
                 form.InitUIRoot(rect);
-                form.Disable();
+                if (form as IMainUI == null)
+                    form.Disable();
             }
 
             return new List<IForm>(forms);
         }
+
+
+        public override void CLateUpdate()
+        {
+            //if(canvas.)
+        }
+
     }
 }

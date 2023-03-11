@@ -1,16 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEditor.SceneManagement;
-using UnityEditor;
-using UnityEngine;
 
 namespace PG.Editor
 {
     public class CmdGame : UnityEditor.Editor
     {
-        [MenuItem("Game/Play")]
-        static void Play()
+
+        public const string KEY_ON_MENU = "EditorPlayOnMenu";
+
+        [MenuItem("Game/PlayOnMenu")]
+        static void PlayOnMenu()
         {
+            EditorPrefs.SetBool(KEY_ON_MENU, true);
+            EditorSceneManager.OpenScene("Assets/PG/Scenes/System.unity");
+            EditorApplication.isPlaying = true;
+        }
+
+        [MenuItem("Game/PlayEnterGame")]
+        static void PlayEnterGame()
+        {
+            EditorPrefs.SetBool(KEY_ON_MENU, false);
             EditorSceneManager.OpenScene("Assets/PG/Scenes/System.unity");
             EditorApplication.isPlaying = true;
         }

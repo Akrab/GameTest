@@ -8,4 +8,9 @@ namespace PG.ECS.UI
      
     }
 
+    struct EStartGameComp
+    {
+
+    }
+
 }

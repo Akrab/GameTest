@@ -1,6 +1,7 @@
 using Leopotam.EcsLite;
 using PG.ECS.Game;
 using PG.ECS.Game.Player;
+using PG.ECS.UI;
 using Zenject;
 
 namespace PG.System
@@ -26,7 +27,10 @@ namespace PG.System
 
             gameUpdateSys.Add(new EcsMovePlayer());
             gameUpdateSys.Add(new EcsPlayerRotation());
+            gameUpdateSys.Add(new EcsPlayGame());
+            
             gameFixedUpdateSys.Add(new EcsKillZ());
+
 
             gameUpdateSys.Init();
             gameFixedUpdateSys.Init();
